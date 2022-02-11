@@ -30,8 +30,6 @@ typedef StateTransition<Event, In, Out> = Out Function(Event event, In state);
 // Side effect function.
 typedef SideEffect<Event, State> = void Function(Event event, State state);
 
-typedef TCaller<Event, State> = StateTransitionCaller<Event, State>;
-
 // Helper functions.
 StateTransitionCaller<Event, State> transition<Event, State, REvent extends Event, InState extends State>(
   StateTransition<REvent, InState, State> transition,
