@@ -1,3 +1,4 @@
-## 0.0.1
+## 0.1.0
 
-* TODO: Describe initial release.
+* Initial release
+* Added a `GraphBloc` that behaves like an FSM. Setting up a `BlocStateGraph` that defines all of the `StateTransitions`.
