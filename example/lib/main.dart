@@ -73,15 +73,18 @@ class ExampleGraphBloc extends GraphBloc<ExampleEvent, ExampleState> {
   BlocStateGraph<ExampleEvent, ExampleState> get graph => BlocStateGraph(
         graph: {
           ExampleStateLoading: {
-            ExampleEventLoad: transition((ExampleEventLoad event, ExampleStateLoading state) {
+            ExampleEventLoad:
+                transition((ExampleEventLoad event, ExampleStateLoading state) {
               return const ExampleStateLoaded(0);
             }),
           },
           ExampleStateLoaded: {
-            ExampleEventIncrement: transition((ExampleEventIncrement event, ExampleStateLoaded state) {
+            ExampleEventIncrement: transition(
+                (ExampleEventIncrement event, ExampleStateLoaded state) {
               return ExampleStateLoaded(state.counter + 1);
             }),
-            ExampleEventDecrement: transition((ExampleEventDecrement event, ExampleStateLoaded state) {
+            ExampleEventDecrement: transition(
+                (ExampleEventDecrement event, ExampleStateLoaded state) {
               return ExampleStateLoaded(state.counter - 1);
             }),
           },
@@ -90,7 +93,8 @@ class ExampleGraphBloc extends GraphBloc<ExampleEvent, ExampleState> {
           ExampleEventError: transition((event, state) {
             return const ExampleStateError('Failed loading');
           }),
-          ExampleEventReset: transition(((event, state) => const ExampleStateLoaded(0))),
+          ExampleEventReset:
+              transition(((event, state) => const ExampleStateLoaded(0))),
         },
       );
 }
@@ -143,7 +147,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  ExampleGraphBloc bloc = ExampleGraphBloc(initialState: const ExampleStateLoaded());
+  ExampleGraphBloc bloc =
+      ExampleGraphBloc(initialState: const ExampleStateLoaded());
 
   void _incrementCounter() {
     bloc.add(const ExampleEventIncrement());

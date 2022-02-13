@@ -1,5 +1,5 @@
 name: graph_bloc
-description: A package that implements FSMs for the Bloc package.
+description: A package that implements a lightweight and flexible FSM using a StateGraph for the Bloc package.
 version: 0.1.0
 homepage: https://github.com/CodeKoalas/graph_bloc
 
