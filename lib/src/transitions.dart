@@ -7,10 +7,12 @@ class StateTransitionCaller<Event, State> {
   /// {@macro state_transition_caller}
   const StateTransitionCaller._({this.transition, this.sideEffect});
 
-  const factory StateTransitionCaller.fromTransition({StateTransition<Event, State, State>? transition}) =
+  const factory StateTransitionCaller.fromTransition(
+          {StateTransition<Event, State, State>? transition}) =
       StateTransitionCaller;
 
-  const factory StateTransitionCaller.fromSideEffect({SideEffect<Event, State>? sideEffect}) = StateTransitionCaller;
+  const factory StateTransitionCaller.fromSideEffect(
+      {SideEffect<Event, State>? sideEffect}) = StateTransitionCaller;
 
   const factory StateTransitionCaller({
     StateTransition<Event, State, State>? transition,
@@ -31,25 +33,32 @@ typedef StateTransition<Event, In, Out> = Out Function(Event event, In state);
 typedef SideEffect<Event, State> = void Function(Event event, State state);
 
 // Helper functions.
-StateTransitionCaller<Event, State> transition<Event, State, REvent extends Event, InState extends State>(
+StateTransitionCaller<Event, State>
+    transition<Event, State, REvent extends Event, InState extends State>(
   StateTransition<REvent, InState, State> transition,
 ) =>
-    StateTransitionCaller<Event, State>(
-      transition: (event, state) => transition(event as REvent, state as InState),
-    );
+        StateTransitionCaller<Event, State>(
+          transition: (event, state) =>
+              transition(event as REvent, state as InState),
+        );
 
-StateTransitionCaller<Event, State> transitionWithEffect<Event, State, REvent extends Event, InState extends State>(
+StateTransitionCaller<Event, State> transitionWithEffect<Event, State,
+        REvent extends Event, InState extends State>(
   StateTransition<REvent, InState, State> transition,
   SideEffect<REvent, State> sideEffect,
 ) =>
     StateTransitionCaller<Event, State>(
-      transition: (event, state) => transition(event as REvent, state as InState),
-      sideEffect: (event, state) => sideEffect(event as REvent, state as InState),
+      transition: (event, state) =>
+          transition(event as REvent, state as InState),
+      sideEffect: (event, state) =>
+          sideEffect(event as REvent, state as InState),
     );
 
-StateTransitionCaller<Event, State> sideEffect<Event, State, REvent extends Event, InState extends State>(
+StateTransitionCaller<Event, State>
+    sideEffect<Event, State, REvent extends Event, InState extends State>(
   SideEffect<REvent, InState> sideEffect,
 ) =>
-    StateTransitionCaller<Event, State>(
-      sideEffect: (event, state) => sideEffect(event as REvent, state as InState),
-    );
+        StateTransitionCaller<Event, State>(
+          sideEffect: (event, state) =>
+              sideEffect(event as REvent, state as InState),
+        );

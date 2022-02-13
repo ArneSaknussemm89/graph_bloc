@@ -7,7 +7,7 @@ import 'package:graph_bloc/graph_bloc.dart';
 ///
 /// @TODO: Add documentation and examples
 class BlocStateGraph<Event, State> {
-    /// {@macro graph}
+  /// {@macro graph}
   const BlocStateGraph({
     required this.graph,
     this.unrestrictedGraph = const {},
@@ -32,7 +32,8 @@ class BlocStateGraph<Event, State> {
     transition?.sideEffect?.call(event, state);
   }
 
-  StateTransitionCaller<Event, State>? getTransitionFor(Event event, State state) {
+  StateTransitionCaller<Event, State>? getTransitionFor(
+      Event event, State state) {
     final stateEntry = graph[state.runtimeType];
     if (stateEntry != null) {
       final transition = stateEntry[event.runtimeType];

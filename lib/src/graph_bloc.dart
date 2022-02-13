@@ -6,7 +6,8 @@ mixin BlocStateGraphMixin<Event, State> {
 }
 
 /// The basic class for a GraphBloc.
-abstract class GraphBloc<Event, State> extends Bloc<Event, State> with BlocStateGraphMixin<Event, State> {
+abstract class GraphBloc<Event, State> extends Bloc<Event, State>
+    with BlocStateGraphMixin<Event, State> {
   GraphBloc({required State initialState}) : super(initialState) {
     // configure a single on<Event> handler that passes the event to the _handleGraphEvent function
     // that's in charge of using [graph] to determine the next state.
