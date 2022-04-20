@@ -45,7 +45,7 @@ StateTransitionCaller<Event, State>
 StateTransitionCaller<Event, State> transitionWithEffect<Event, State,
         REvent extends Event, InState extends State>(
   StateTransition<REvent, InState, State> transition,
-  SideEffect<REvent, State> sideEffect,
+  SideEffect<REvent, InState> sideEffect,
 ) =>
     StateTransitionCaller<Event, State>(
       transition: (event, state) =>
