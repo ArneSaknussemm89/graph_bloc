@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:graph_bloc/graph_bloc.dart';
-import 'package:graph_bloc/src/graph_bloc.dart';
 
 abstract class ExampleEvent extends Equatable {
   const ExampleEvent();

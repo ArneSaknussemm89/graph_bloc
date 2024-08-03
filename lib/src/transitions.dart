@@ -1,5 +1,11 @@
 // Type definitions.
 
+// Transition builder function.
+typedef StateTransition<Event, In, Out> = Out Function(Event event, In state);
+
+// Side effect function.
+typedef SideEffect<Event, State> = void Function(Event event, State state);
+
 /// {@template state_transition_caller}
 /// An entry in the [BlocStateGraph] that describes a state [transition]. With an optional [sideEffect]
 /// {@endtemplate}
@@ -7,12 +13,13 @@ class StateTransitionCaller<Event, State> {
   /// {@macro state_transition_caller}
   const StateTransitionCaller._({this.transition, this.sideEffect});
 
-  const factory StateTransitionCaller.fromTransition(
-          {StateTransition<Event, State, State>? transition}) =
-      StateTransitionCaller;
+  const factory StateTransitionCaller.fromTransition({
+    StateTransition<Event, State, State>? transition,
+  }) = StateTransitionCaller;
 
-  const factory StateTransitionCaller.fromSideEffect(
-      {SideEffect<Event, State>? sideEffect}) = StateTransitionCaller;
+  const factory StateTransitionCaller.fromSideEffect({
+    SideEffect<Event, State>? sideEffect,
+  }) = StateTransitionCaller;
 
   const factory StateTransitionCaller({
     StateTransition<Event, State, State>? transition,
@@ -25,12 +32,6 @@ class StateTransitionCaller<Event, State> {
   /// The [sideEffect] that is called when the [StateTransitionCaller] is called.
   final SideEffect<Event, State>? sideEffect;
 }
-
-// Transition builder function.
-typedef StateTransition<Event, In, Out> = Out Function(Event event, In state);
-
-// Side effect function.
-typedef SideEffect<Event, State> = void Function(Event event, State state);
 
 // Helper functions.
 StateTransitionCaller<Event, State>
