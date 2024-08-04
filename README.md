@@ -7,7 +7,7 @@ the relationship between Events and States remains declarative.
 You will need to make to include this package in your `pubspec.yaml` file.
 ```yaml
 dependencies:
-  graph_bloc: 0.1.0
+  graph_bloc: ^1.0.0
 ```
 
 ## Usage
